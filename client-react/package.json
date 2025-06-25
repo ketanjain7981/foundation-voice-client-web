@@ -1,6 +1,6 @@
 {
   "name": "@think41/foundation-voice-client-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "PipeCat CAI React SDK - Extension of PipeCat React SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,6 +18,9 @@
   ],
   "author": "",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/think41/foundation-voice-client-react.git",
@@ -35,7 +38,7 @@
     "@pipecat-ai/client-react": "^0.4.0"
   },
   "dependencies": {
-    "@think41/foundation-voice-client-js": "1.0.0",
+    "@think41/foundation-voice-client-js": "2.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "typescript": "^5.0.0",
