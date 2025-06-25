@@ -2105,10 +2105,10 @@ var Client = class extends $a7c324a73303ad55$export$fa42a01c1d60f4a1 {
 };
 
 // src/utils/utils.ts
-import { ProtobufFrameSerializer } from "@pipecat-ai/websocket-transport";
+import { ProtobufFrameSerializer as ProtobufFrameSerializer2 } from "@pipecat-ai/websocket-transport";
 
 // src/transport/transport.ts
-import { WebSocketTransport } from "@pipecat-ai/websocket-transport";
+import { WebSocketTransport, ProtobufFrameSerializer } from "@pipecat-ai/websocket-transport";
 
 // ../node_modules/@daily-co/daily-js/dist/daily-esm.js
 function e(e3, t3) {
@@ -25645,7 +25645,10 @@ var TransportFactory = class {
     }
     switch (transportType) {
       case "websocket":
-        return new WebSocketTransport(options);
+        return new WebSocketTransport({
+          serializer: new ProtobufFrameSerializer(),
+          recorderSampleRate: 16e3
+        });
       case "daily":
         return new $683f111f61e07358$export$b1ca982aa1e488c1(options);
       case "webrtc":
@@ -25724,7 +25727,7 @@ async function createRTVIClient(transportType, customOptions) {
   switch (transportType) {
     case "websocket":
       transport = TransportFactory.create("websocket", {
-        serializer: new ProtobufFrameSerializer(),
+        serializer: new ProtobufFrameSerializer2(),
         recorderSampleRate: 16e3
       });
       break;
@@ -25809,7 +25812,7 @@ async function createRTVIClient(transportType, customOptions) {
 }
 
 // src/index.ts
-import { WebSocketTransport as WebSocketTransport2, ProtobufFrameSerializer as ProtobufFrameSerializer2 } from "@pipecat-ai/websocket-transport";
+import { WebSocketTransport as WebSocketTransport2, ProtobufFrameSerializer as ProtobufFrameSerializer3 } from "@pipecat-ai/websocket-transport";
 export {
   $8ead7b33b8402751$export$be839f0100cd3132 as ActionEndpointNotSetError,
   $8ead7b33b8402751$export$885fb96b850e8fbb as BotNotReadyError,
@@ -25824,7 +25827,7 @@ export {
   $7afbbd59ebaa42bf$export$243e62d78d3b544d as LogLevel,
   $b48f893ed1354c1e$export$e9a960646cc432aa as MessageDispatcher,
   $4e887b6dcd7ec3e7$export$60a765086a8f0478 as OpenAIRealTimeWebRTCTransport,
-  ProtobufFrameSerializer2 as ProtobufFrameSerializer,
+  ProtobufFrameSerializer3 as ProtobufFrameSerializer,
   $b48f893ed1354c1e$export$378529d7a8bead8b as RTVIActionRequest,
   $a7c324a73303ad55$export$fa42a01c1d60f4a1 as RTVIClient,
   $7614fb2168c523cc$export$23bc637255b2a471 as RTVIClientHelper,

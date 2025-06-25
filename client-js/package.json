@@ -1,13 +1,13 @@
 {
   "name": "@think41/foundation-voice-client-js",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "PipeCat Client JS SDK with Transport Layer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ketanjain7981/foundation-voice-client-web.git",
+    "url": "git+https://github.com/think41/foundation-voice-client-web.git",
     "directory": "client-js"
   },
   "files": [
@@ -27,9 +27,9 @@
   ],
   "author": "Ketan Jain",
   "license": "MIT",
-  "homepage": "https://github.com/ketanjain7981/foundation-voice-client-web/tree/main/client-js#readme",
+  "homepage": "https://github.com/think41/foundation-voice-client-web/tree/main/client-js#readme",
   "bugs": {
-    "url": "https://github.com/ketanjain7981/foundation-voice-client-web/issues"
+    "url": "https://github.com/think41/foundation-voice-client-web/issues"
   },
   "publishConfig": {
     "access": "public"
