@@ -1,6 +1,6 @@
 {
   "name": "@think41/foundation-voice-client-react",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "PipeCat CAI React SDK - Extension of PipeCat React SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,15 +16,19 @@
     "typescript",
     "sdk"
   ],
-  "author": "",
+  "author": "Ketan Jain",
   "license": "MIT",
+  "homepage": "https://github.com/ketanjain7981/foundation-voice-client-web/tree/main/client-react#readme",
+  "bugs": {
+    "url": "https://github.com/ketanjain7981/foundation-voice-client-web/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/think41/foundation-voice-client-react.git",
-    "directory": "foundation-voice-client-react"
+    "url": "git+https://github.com/ketanjain7981/foundation-voice-client-web.git",
+    "directory": "client-react"
   },
   "files": [
     "dist",
@@ -38,7 +42,7 @@
     "@pipecat-ai/client-react": "^0.4.0"
   },
   "dependencies": {
-    "@think41/foundation-voice-client-js": "2.0.0",
+    "@think41/foundation-voice-client-js": "3.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "typescript": "^5.0.0",
