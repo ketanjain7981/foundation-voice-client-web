@@ -4,22 +4,9 @@ A TypeScript SDK for PipeCat with transport layer implementations.
 
 ## Installation
 
-1. First, create a personal access token (classic) with the `read:packages` scope from GitHub:
-   - Go to GitHub → Settings → Developer settings → Personal access tokens → Generate new token
-   - Select `read:packages` scope
-   - Copy the generated token
-
-2. Create or update your `~/.npmrc` file with the following content:
-   ```
-   @think41:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
-   ```
-   Replace `YOUR_GITHUB_USERNAME` with your GitHub username and `YOUR_GITHUB_TOKEN` with the token you generated.
-
-3. Install the package:
-   ```bash
-   npm install @think41/client-js-standalone
-   ```
+```bash
+npm install @think41/foundation-voice-client-js
+```
 
 ## Usage
 

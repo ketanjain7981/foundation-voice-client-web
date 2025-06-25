@@ -1,3 +1,9 @@
-# Foundation Voice Client - React
+# Foundation Voice Client SDK for React
 
-React components for interacting with the Foundation Voice Client.
+A React wrapper for the Foundation Voice Client JS SDK.
+
+## Installation
+
+```bash
+npm install @think41/foundation-voice-client-react
+```
