@@ -1,0 +1,40 @@
+{
+  "name": "@think41/foundation-voice-client-js",
+  "version": "0.1.3",
+  "description": "PipeCat Client JS SDK with Transport Layer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/think41/foundation-voice-client-js.git"
+  },
+  "scripts": {
+    "build": "tsup index.ts --format esm --dts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "pipecat",
+    "cai",
+    "typescript",
+    "sdk"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@pipecat-ai/client-js": "^0.4.1",
+    "@pipecat-ai/daily-transport": "^0.4.0",
+    "@pipecat-ai/gemini-live-websocket-transport": "^0.4.0",
+    "@pipecat-ai/openai-realtime-webrtc-transport": "^0.4.0",
+    "@pipecat-ai/small-webrtc-transport": "^0.4.0",
+    "@pipecat-ai/websocket-transport": "^0.4.2",
+    "protobufjs": "^7.5.2"
+  },
+  "devDependencies": {
+    "tsup": "^7.0.0",
+    "typescript": "^5.0.0"
+  },
+  "typescript": {
+    "tsconfig": "tsconfig.json"
+  }
+}
