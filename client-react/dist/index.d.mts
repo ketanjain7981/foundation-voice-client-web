@@ -15,8 +15,11 @@ interface ChatWindowProps {
         type: 'user' | 'bot';
         text: string;
     }>;
+    userMessageClassName?: string;
+    botMessageClassName?: string;
+    submitButtonClassName?: string;
 }
-declare function ChatWindow({ className, initialMessages }: ChatWindowProps): react_jsx_runtime.JSX.Element;
+declare function ChatWindow({ className, initialMessages, userMessageClassName, botMessageClassName, submitButtonClassName }: ChatWindowProps): react_jsx_runtime.JSX.Element;
 
 interface MicControlProps {
     onStart?: () => void;

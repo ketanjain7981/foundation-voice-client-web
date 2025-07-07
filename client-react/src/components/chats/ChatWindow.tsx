@@ -16,11 +16,17 @@ export interface ChatWindowProps {
     type: 'user' | 'bot';
     text: string;
   }>;
+  userMessageClassName?: string;
+  botMessageClassName?: string;
+  submitButtonClassName?: string;
 }
 
 export function ChatWindow({ 
   className = "w-full h-full",
-  initialMessages = [] 
+  initialMessages = [],
+  userMessageClassName = 'bg-violet-600 text-black rounded-l-lg rounded-br-lg',
+  botMessageClassName = 'bg-white text-neutral-800 rounded-r-lg rounded-bl-lg',
+  submitButtonClassName = 'bg-violet-600 text-black hover:bg-violet-700 focus:ring-violet-500'
 }: ChatWindowProps) {
   // Use shared chat context instead of local state
   const { messages, addMessage, clearMessages } = useChat();
@@ -165,8 +171,8 @@ export function ChatWindow({
                   <div
                     className={`px-3 py-2 text-sm ${
                       message.type === 'user'
-                        ? 'bg-violet-600 text-white rounded-l-lg rounded-br-lg'
-                        : 'bg-white text-neutral-800 rounded-r-lg rounded-bl-lg'
+                        ? userMessageClassName
+                        : botMessageClassName
                     }`}
                   >
                     <p>{message.text}</p>
@@ -205,7 +211,7 @@ export function ChatWindow({
           <button
             type="submit"
             disabled={!isConnected || !inputValue.trim()}
-            className="px-4 py-2 bg-violet-600 text-white rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className={`px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${submitButtonClassName}`}
           >
             Send
           </button>
