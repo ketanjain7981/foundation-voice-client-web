@@ -1,5 +1,16 @@
 # @think41/foundation-voice-client-react
 
+## 3.0.3
+
+### Patch Changes
+
+- 4fa98e3: feat: Make chat message and submit button styling configurable
+
+  - Added `userMessageClassName` prop to customize user message styling
+  - Added `botMessageClassName` prop to customize bot message styling
+  - Added `submitButtonClassName` prop to customize submit button styling
+  - Maintained backward compatibility with default styling
+
 ## 3.0.2
 
 ### Patch Changes

@@ -17,7 +17,7 @@
     "@changesets/cli": "^2.29.5"
   },
   "dependencies": {
-    "@think41/foundation-voice-client-js": "^1.0.0",
-    "@think41/foundation-voice-client-react": "^1.0.0"
+    "@think41/foundation-voice-client-js": "^3.0.2",
+    "@think41/foundation-voice-client-react": "^3.0.2"
   }
 }
