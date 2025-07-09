@@ -87,9 +87,16 @@ import {
       
         // Publish mic track right after connect
         try {
-          const audioTrack = await createLocalAudioTrack();
-          await this.room.localParticipant.publishTrack(audioTrack);
-          console.log("Microphone track published");
+          const audioTrack = await createLocalAudioTrack({
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          });
+          await this.room.localParticipant.publishTrack(audioTrack, {
+            source: Track.Source.Microphone,
+            name: 'microphone'
+          });
+          console.log("Microphone track published successfully");
         } catch (err) {
           console.error("Failed to create or publish mic track:", err);
         }
@@ -97,12 +104,21 @@ import {
         this.room.on("trackSubscribed", (track, pub, participant) => {
           if (track.kind === "audio" && track instanceof RemoteTrack) {
             const audioElement = track.attach();
-            document.body.appendChild(audioElement); // 🔊 Append to DOM
+            audioElement.style.display = 'none'; // Hide but keep in DOM
+            document.body.appendChild(audioElement);
+            console.log("Remote audio track attached from", participant.identity);
           }
         });
       
         this.room.on("dataReceived", (payload, participant) => {
           try {
+            // Check if this is a binary audio message or a JSON control message
+            if (payload instanceof Uint8Array && payload.byteLength > 0) {
+              // Handle binary audio data if needed
+              return;
+            }
+            
+            // Otherwise treat as JSON control message
             const msg: RTVIMessage = JSON.parse(new TextDecoder().decode(payload));
             this._messageHandler(msg);
           } catch (e) {
@@ -129,8 +145,14 @@ import {
     }
   
     handleUserAudioStream(data: ArrayBuffer): void {
+        // Check if microphone is enabled first
+        if (!this.room.localParticipant.isMicrophoneEnabled) {
+          console.log('Microphone is disabled, enabling it');
+          this.enableMic(true);
+        }
+
         if (this.options?.bufferLocalAudioUntilBotReady && this.state !== "ready") {
-          this._audioBuffer.push(data);
+          this._audioBuffer.push(data.slice(0)); // Make a copy to avoid reference issues
           this._emitInternalMessage(LiveKitRTVIMessageType.AUDIO_BUFFERING_STARTED);
           return;
         }
@@ -148,8 +170,8 @@ import {
   
       _sendAudioBatch(dataBatch: ArrayBuffer[]): void {
         for (const chunk of dataBatch) {
-          const payload = new TextEncoder().encode(JSON.stringify(chunk));
-          this.room.localParticipant.publishData(payload, {
+          // Send the binary audio data directly without JSON stringification
+          this.room.localParticipant.publishData(new Uint8Array(chunk), {
             reliable: true,
           });
         }
@@ -213,7 +235,12 @@ import {
     }
   
     enableMic(enable: boolean): void {
-        this.room.localParticipant.setMicrophoneEnabled(enable);
+        try {
+          this.room.localParticipant.setMicrophoneEnabled(enable);
+          console.log(`Microphone ${enable ? 'enabled' : 'disabled'}`);
+        } catch (err) {
+          console.error('Error toggling microphone:', err);
+        }
       }
       
   
