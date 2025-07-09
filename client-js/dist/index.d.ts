@@ -21,7 +21,7 @@ declare class Client extends RTVIClient {
  */
 declare function createRTVIClient(transportType: string, customOptions?: Partial<RTVIClientOptions>): Promise<Client>;
 
-type TransportType = "websocket" | "daily" | "webrtc" | "gemini" | "openai";
+type TransportType = "websocket" | "daily" | "webrtc" | "gemini" | "openai" | "livekit";
 interface TransportConfig {
     websocket: {
         serializer: any;
@@ -32,6 +32,7 @@ interface TransportConfig {
     webrtc: any;
     gemini: GeminiLLMServiceOptions;
     openai: OpenAIServiceOptions;
+    livekit: any;
 }
 declare class TransportFactory {
     private static isBrowser;

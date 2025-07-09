@@ -9,6 +9,8 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "allowImportingTsExtensions": false,
+    "noResolve": false,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
@@ -23,7 +25,8 @@
     "./src/index.ts",
     "./src/client.ts",
     "./src/utils/utils.ts",
-    "./src/transport/transport.ts"
+    "./src/transport/transport.ts",
+    "./src/transport/LivekitTransport.ts"
   ],
   "include": [
     "src/transport/**/*"

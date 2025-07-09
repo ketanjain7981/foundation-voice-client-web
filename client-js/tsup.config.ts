@@ -14,7 +14,8 @@ export default defineConfig({
     '@pipecat-ai/small-webrtc-transport',
     '@pipecat-ai/gemini-live-websocket-transport',
     '@pipecat-ai/openai-realtime-webrtc-transport',
-    'protobufjs'
+    'protobufjs',
+    'livekit-client'
   ],
   esbuildOptions(options) {
     options.define = {

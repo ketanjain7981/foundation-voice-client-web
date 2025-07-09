@@ -5,6 +5,9 @@ import {
     createLocalAudioTrack,
     createLocalVideoTrack,
     RoomOptions,
+    TrackPublication,
+    RemoteParticipant,
+    ConnectionState,
   } from "livekit-client";
   
   import {
@@ -101,7 +104,7 @@ import {
           console.error("Failed to create or publish mic track:", err);
         }
       
-        this.room.on("trackSubscribed", (track, pub, participant) => {
+        this.room.on("trackSubscribed", (track: RemoteTrack, pub: TrackPublication, participant: RemoteParticipant) => {
           if (track.kind === "audio" && track instanceof RemoteTrack) {
             const audioElement = track.attach();
             audioElement.style.display = 'none'; // Hide but keep in DOM
@@ -110,7 +113,7 @@ import {
           }
         });
       
-        this.room.on("dataReceived", (payload, participant) => {
+        this.room.on("dataReceived", (payload: Uint8Array, participant?: RemoteParticipant) => {
           try {
             // Check if this is a binary audio message or a JSON control message
             if (payload instanceof Uint8Array && payload.byteLength > 0) {
@@ -126,11 +129,11 @@ import {
           }
         });
       
-        this.room.on("participantConnected", (participant) => {
+        this.room.on("participantConnected", (participant: RemoteParticipant) => {
           console.log("Participant connected:", participant.identity);
         });
       
-        this.room.on("connectionStateChanged", (state) => {
+        this.room.on("connectionStateChanged", (state: ConnectionState) => {
           console.log("Room connection state changed:", state);
         });
       }      
