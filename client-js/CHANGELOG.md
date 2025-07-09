@@ -1,5 +1,11 @@
 # @think41/foundation-voice-client-js
 
+## 3.0.4
+
+### Patch Changes
+
+- 407d3da: fix(build): Resolve LiveKit client bundling and type errors to enable successful publishing.
+
 ## 3.0.3
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @think41/foundation-voice-client-react
 
+## 3.0.5
+
+### Patch Changes
+
+- Updated dependencies [407d3da]
+  - @think41/foundation-voice-client-js@3.0.4
+
 ## 3.0.4
 
 ### Patch Changes
