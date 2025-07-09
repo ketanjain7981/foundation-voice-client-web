@@ -46,6 +46,9 @@ export async function createRTVIClient(
         api_key: process.env.OPENAI_API_KEY || "",
       } as any);
       break;
+    case "livekit":
+      transport = TransportFactory.create("livekit", {});
+      break;
     default:
       throw new Error(`Invalid transport type: ${transportType}`);
   }

@@ -10,13 +10,15 @@ import { DailyTransport } from "@pipecat-ai/daily-transport";
 import { SmallWebRTCTransport } from "@pipecat-ai/small-webrtc-transport";
 import { GeminiLiveWebsocketTransport, GeminiLLMServiceOptions } from '@pipecat-ai/gemini-live-websocket-transport';
 import { OpenAIRealTimeWebRTCTransport, OpenAIServiceOptions } from '@pipecat-ai/openai-realtime-webrtc-transport';
+import { LiveKitTransport } from "./LivekitTransport";
 
 export type TransportType = 
     | "websocket" 
     | "daily" 
     | "webrtc" 
     | "gemini"
-    | "openai";
+    | "openai"
+    | "livekit";
 
 export interface TransportConfig {
     websocket: {
@@ -28,6 +30,7 @@ export interface TransportConfig {
     webrtc: any; 
     gemini: GeminiLLMServiceOptions;
     openai: OpenAIServiceOptions;
+    livekit: any;
 }
 
 export class TransportFactory {
@@ -62,13 +65,16 @@ export class TransportFactory {
             case "openai":
                 return new OpenAIRealTimeWebRTCTransport(options as OpenAIServiceOptions) as unknown as Transport;
                 
+            case "livekit":
+                return new LiveKitTransport(options) as unknown as Transport;
+                
             default:
                 throw new Error(`Unsupported transport type: ${transportType}`);
         }
     }
 
     static getAvailableTransports(): TransportType[] {
-        return ["websocket", "daily", "webrtc", "gemini", "openai"];
+        return ["websocket", "daily", "webrtc", "gemini", "openai", "livekit"];
     }
 }
 
@@ -152,7 +158,8 @@ export {
     DailyTransport,
     SmallWebRTCTransport,
     GeminiLiveWebsocketTransport,
-    OpenAIRealTimeWebRTCTransport
+    OpenAIRealTimeWebRTCTransport,
+    LiveKitTransport
 };
 
 export type {
